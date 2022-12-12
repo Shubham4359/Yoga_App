@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
 class todo(BaseModel):
-    title:str
-    desc:str
+    name:str
+    email:str
+    password:str
+    age:int

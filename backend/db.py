@@ -13,7 +13,7 @@ def get_all():
     return data
 
 def get_one(title):
-    response = collection.find_one({"title":title},{"_id":0})
+    response = collection.find_one({"name":title},{"_id":0})
     return response
 
 def create(todo):
@@ -24,10 +24,10 @@ def create(todo):
 
 def update(todo):
     todo = dict(todo)
-    response = collection.update_one({"title":todo["title"]},{"$set":todo})
-    response = collection.find_one({"desc":todo["desc"]},{"_id":0})
+    response = collection.update_one({"name":todo["name"]},{"$set":todo})
+    response = collection.find_one({"name":todo["name"]},{"_id":0})
     return response
 
 def delete(title):
-    response = collection.delete_one({"title":title})
+    response = collection.delete_one({"name":title})
     return response.deleted_count

@@ -24,11 +24,11 @@ def read_root():
     return {"Ping":"Pong"}
 
 @app.get("/api/todo{title}")
-def get_one(title:str):
-    response = db.get_one(title)
+def get_one(name:str):
+    response = db.get_one(name)
     if response :
         return {"response":response}
-    raise HTTPException(404,"Todo not found for {title}")
+    raise HTTPException(404,"Todo not found for {name}")
 
 @app.get("/app/all")
 def get_all():
@@ -52,8 +52,8 @@ def updatetodo(todo:models.todo):
     raise HTTPException(404,"Todo not found")
 
 @app.delete("/deleteapi/todo{title}")
-def deletetodo(title:str):
-    response = db.delete(title)
+def deletetodo(name:str):
+    response = db.delete(name)
     if response :
         return {"response":"deleted succesfully"}
     raise HTTPException(404,"Todo not found")
